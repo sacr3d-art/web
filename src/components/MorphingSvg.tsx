@@ -283,7 +283,10 @@ const MorphingSVG: React.FC = () => {
                     fontWeight="bold"
                     background={`linear-gradient(270deg, ${endColor}, ${startColor})`}
                     backgroundClip={"text"}
-                    textAlign={isLeftAligned ? "right" : "left"}
+                    textAlign={{
+                      base: "center",
+                      md: isLeftAligned ? "right" : "left",
+                    }}
                   >
                     {section.title}
                   </Text>
