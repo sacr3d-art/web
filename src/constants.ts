@@ -8,72 +8,77 @@ export const svgPaths = [
 
 export const sections = [
   {
-    title: "Who We Are",
+    title: "What we do",
     description:
-      "SACR3D Art consists of a group of like-minded individuals born from the sacred embrace of the One, with the same goal in mind: satisfying the needs of our customers while sharpening our skills with every project we take on.",
-    color: "red",
-    images: [
-      {
-        title: "Tibo",
-        description: "Our beloved handyman",
-        url: "src/assets/images/1.jpeg",
-      },
-      {
-        title: "Feci",
-        description: "our big brain maestro",
-        url: "src/assets/images/2.jpeg",
-      },
-      {
-        title: "Spiderman (Symbiote)",
-        description: "just spidey",
-        url: "src/assets/images/3.jpeg",
-      },
-    ],
-  },
-  {
-    title: "Our Services",
-    description:
-      "We offer a range of services including custom 3D printing, intricate CNC woodworking, and event design solutions. Our approach combines creative design with technical excellence, allowing us to bring unique concepts to life.",
+      "We offer a wide range of services including intricate CNC woodworking, custom 3D printing, and event design solutions. Our approach combines creative design with technical excellence, allowing us to bring  unique concepts to life.",
     color: "orange",
     images: [
       {
         title: "Custom Made Hangboard",
         description:
-          "Removable pullup bar and custom side-holds integrated into hangboard? No problem.",
-        url: "src/assets/images/5.jpeg",
+          "You would like a removable pullup bar and custom side-holds integrated into your hangboard? No problem!",
+        url: "https://i.imgur.com/WdJzdlu.jpeg",
       },
       {
         title: "3d printed designer lamp parts",
-        description: "The lamps were showcased in an exhibition in Milan",
-        url: "src/assets/images/6.jpeg",
+        description:
+          "You have an exhibition in Milan in a week? We can deliver.",
+        url: "https://i.imgur.com/egdEyES.jpeg",
       },
       {
         title: "Festival Stage Design",
-        description: "hehe",
-        url: "src/assets/images/4.png",
+        description: `You need a stage design from scratch to your music festival? \n Hit us up!`,
+        url: "https://i.imgur.com/r6wsDMJ.png",
+      },
+    ],
+  },
+
+  {
+    title: "Our Process",
+    description:
+      "At SACR3D Art, we use cutting-edge technology to design, prototype, and fabricate each piece, ensuring exceptional quality at every stage.",
+    images: [
+      {
+        title: "From design",
+        description: "Using CAD/CAM software to design your ideas",
+        url: "https://i.imgur.com/6zVdAVV.png",
+      },
+      {
+        title: "to product",
+        description: "And them come to life",
+        url: "https://i.imgur.com/BblUxLd.jpeg",
+      },
+      {
+        title: "our work brings joy to all",
+        description:
+          "One of our proudest works from last year is the stage design for the Microasis festival.",
+        url: "https://i.imgur.com/pc6GQW5.jpeg",
       },
     ],
   },
   {
-    title: "Our Process",
+    title: "Who We Are",
     description:
-      "At Sacr3d Art, our process starts with your ideas. We use cutting-edge technology to design, prototype, and fabricate each piece, ensuring exceptional quality at every stage.",
-    color: "yellow",
+      "SACR3D Art is a group of like-minded beings, emanating from the holy embrace of the One, with the same goal in mind - to help your ideas come to life.",
+    color: "red",
     images: [
       {
-        title: "From design",
-        description: "hehe",
-        url: "src/assets/images/7.png",
+        title: "Tibo",
+        description:
+          "Our beloved, solution-oriented handyman, who can fix everything, including your life",
+        url: "https://i.imgur.com/sDKE8ZI.jpeg",
       },
       {
-        title: "to product",
-        description: "hehe",
-        url: "src/assets/images/8.jpeg",
+        title: "Feci",
+        description:
+          "Our plant-loving zen maestro, who is the mastermind behind the machinery",
+        url: "https://i.imgur.com/jMEDveH.jpeg",
       },
       {
-        title: "our work brings joy to all",
-        description: "hehe",
-        url: "src/assets/images/9.jpeg",
+        title: "Spiderman (Symbiote)",
+        description:
+          "Our friendly neighbourhood Spiderman, who helps out, wherever he can",
+        url: "https://i.imgur.com/iX9KfWK.jpeg",
       },
     ],
   },
@@ -85,41 +90,44 @@ export const sections = [
     images: [
       {
         title: "High precision 3d printing",
-        description: "hehe",
-        url: "src/assets/images/10.jpeg",
+        description:
+          "Our state of the art 3D printers allow have your ideas ready in no time, with the utmost attention to detail",
+        url: "https://i.imgur.com/P9Otz5o.jpeg",
       },
       {
         title: "custom design element crafting",
-        description: "hehe",
-        url: "src/assets/images/11.jpeg",
+        description:
+          "You have a business, but nothing to show? Let us help you!",
+        url: "https://i.imgur.com/y8GUt5A.jpeg",
       },
       {
         title: "fine detail engraving",
-        description: "hehe",
-        url: "src/assets/images/12.jpeg",
+        description:
+          "Our high precision CNC machines combined with our engraving bits can mold wood to the idea of your liking",
+        url: "https://i.imgur.com/wb8TOzq.jpeg",
       },
     ],
   },
   {
-    title: "Where We Operate",
+    title: "Where to find us",
     description:
-      "Sacr3d Art is based in [Your Location], but we cater to clients globally. We ship our creations anywhere, allowing you to experience Sacr3d Art’s craftsmanship wherever you are.",
+      "SACR3D Art is based in Budapest, Hungary, but we cater to clients globally. We ship our creations anywhere, allowing you to experience SACR3D Art’s craftsmanship wherever you may be.",
     color: "cyan",
     images: [
       {
-        title: "Our office",
-        description: "hehe",
-        url: "src/assets/images/13.jpeg",
+        title: "in our office",
+        description: "",
+        url: "https://i.imgur.com/CYhDFS5.jpeg",
       },
       {
         title: "in the wild",
-        description: "hehe",
-        url: "src/assets/images/14.jpeg",
+        description: "",
+        url: "https://i.imgur.com/AVdE3Zq.jpeg",
       },
       {
-        title: "under the radar",
-        description: "hehe",
-        url: "src/assets/images/15.jpeg",
+        title: "in the shadows",
+        description: "",
+        url: "https://i.imgur.com/wvlnqM6.jpeg",
       },
     ],
   },

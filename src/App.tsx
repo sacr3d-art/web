@@ -41,7 +41,7 @@ export default function App() {
           <img width={100} height={100} src={BirdsSvg} />
         </motion.div>
 
-        <Image src="src/assets/web.png" width={'700px'} height={'32px'} />
+        <Image src="https://i.imgur.com/KdcmxJy.png" />
       </Flex>
       <MorphingSVG />
       <Footer />

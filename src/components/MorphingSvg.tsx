@@ -13,6 +13,7 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  Link,
 } from "@chakra-ui/react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
@@ -34,6 +35,9 @@ const MorphingSVG: React.FC = () => {
   const [currentSectionIndex, setCurrentSectionIndex] = useState<number | null>(
     0
   );
+
+  const [isMenuVisible, setIsMenuVisible] = useState(true); // Manage menu visibility
+  const lastScrollY = useRef(0); // Track last scroll position
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -79,6 +83,21 @@ const MorphingSVG: React.FC = () => {
     setImageGradientEndColor(convertHSLToHSLA(endColor, 0.168));
   });
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setIsMenuVisible(
+        currentScrollY < lastScrollY.current || currentScrollY === 0
+      );
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const openModal = (sectionIndex: number, imageIndex: number) => {
     setCurrentSectionIndex(sectionIndex);
     setCurrentImageIndex(imageIndex);
@@ -109,7 +128,8 @@ const MorphingSVG: React.FC = () => {
         <Wrap
           ref={topMenuRef}
           position="sticky"
-          top="0"
+          top={isMenuVisible ? "0" : "-170px"} // Hide menu when scrolling up
+          transition="top 0.3s ease-in-out"
           bg={"white"}
           zIndex={100}
           padding={4}
@@ -232,26 +252,32 @@ const MorphingSVG: React.FC = () => {
               >
                 <animated.div style={textAnimation}>
                   <Text
-                    fontSize="3xl"
+                    fontSize={{ md: "5xl", base: "4xl" }}
                     fontWeight="bold"
                     background={`linear-gradient(to right, ${endColor}, ${startColor});`}
                     backgroundClip={"text"}
+                    textAlign={{
+                      md: isLeftAligned ? "right" : "left",
+                    }}
                   >
                     {section.title}
                   </Text>
                   <Text
-                    fontFamily={"Iceland"}
-                    fontSize={"3xl"}
+                    fontFamily={"Montserrat"}
+                    fontSize={"2xl"}
+                    fontWeight={600}
                     lineHeight={1}
                     marginTop={2}
+                    textAlign={{ md: isLeftAligned ? "right" : "left" }}
                   >
                     {section.description}
                   </Text>
                 </animated.div>
                 <Flex
                   marginTop={4}
-                  gap={4}
-                  justifyContent={{ base: "center", md: "flex-start" }}
+                  gap={8}
+                  width={"100%"}
+                  justifyContent={isLeftAligned ? "flex-end" : "flex-start"}
                 >
                   {imageTrail.map((style, imgIndex) => (
                     <animated.div key={imgIndex} style={style}>
@@ -304,6 +330,20 @@ const MorphingSVG: React.FC = () => {
         })}
       </Flex>
 
+      {/* <Flex flexDirection={"column"}>
+        <Text
+          fontSize="5xl"
+          fontWeight="bold"
+          background={`linear-gradient(to right, ${endColor}, ${startColor});`}
+          backgroundClip={"text"}
+          textAlign={"center"}
+        >
+          Let's get in touch
+        </Text>
+        <Link href="mailto:info@sacr3d.art">info@sacr3d.art</Link>
+        <Link href="tel:+36205254654">+3620525464</Link>
+      </Flex> */}
+
       {/* Modal */}
       <Modal
         isOpen={isOpen}
@@ -352,8 +392,8 @@ const MorphingSVG: React.FC = () => {
                     <Text
                       mt={4}
                       textAlign={"center"}
-                      fontFamily={"Iceland"}
-                      fontSize={"3xl"}
+                      fontFamily={"Montserrat"}
+                      fontSize={"2xl"}
                       lineHeight={1}
                     >
                       {
