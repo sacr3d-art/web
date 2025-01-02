@@ -27,8 +27,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const MorphingSVG: React.FC = () => {
-  const [startColor, setStartColor] = useState("");
-  const [endColor, setEndColor] = useState("");
+  const [startColor, setStartColor] = useState(`red`);
+  const [endColor, setEndColor] = useState("red");
   const [imageGradientStartColor, setImageGradientStartColor] = useState("");
   const [imageGradientEndColor, setImageGradientEndColor] = useState("");
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
@@ -76,12 +76,25 @@ const MorphingSVG: React.FC = () => {
   }
 
   useEffect(() => {
-    setStartColor(gradientStartColor.get());
-    setEndColor(gradientEndColor.get());
+    const unsubscribeStart = scrollYProgress.onChange((value) => {
+      const hue = value * 990; // Map to 0-990
+      setStartColor(`hsl(${hue}, 100%, 50%)`);
+      setImageGradientStartColor(
+        convertHSLToHSLA(`hsl(${hue}, 100%, 50%)`, 0.1)
+      );
+    });
 
-    setImageGradientStartColor(convertHSLToHSLA(startColor, 0.168));
-    setImageGradientEndColor(convertHSLToHSLA(endColor, 0.168));
-  });
+    const unsubscribeEnd = scrollYProgress.onChange((value) => {
+      const hue = value * 540; // Map to 0-540
+      setEndColor(`hsl(${hue}, 100%, 50%)`);
+      setImageGradientEndColor(convertHSLToHSLA(`hsl(${hue}, 100%, 50%)`, 0.3));
+    });
+
+    return () => {
+      unsubscribeStart();
+      unsubscribeEnd();
+    };
+  }, [scrollYProgress]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -145,6 +158,9 @@ const MorphingSVG: React.FC = () => {
               variant="ghost"
               fontSize={{ base: "sm", md: "md" }}
               paddingX={{ base: 2, md: 4 }}
+              _hover={{
+                background: `linear-gradient(to right, ${endColor}, ${startColor});`,
+              }}
             >
               {section.title}
             </Button>
@@ -169,13 +185,24 @@ const MorphingSVG: React.FC = () => {
               : `translateX(-100%)`,
           });
 
-          const textAnimation = useSpring({
+          const titleAnimation = useSpring({
             opacity: inView ? 1 : 0,
             transform: inView
               ? "translateX(0)"
               : isLeftAligned
               ? `translateX(100%)`
               : `translateX(-100%)`,
+            width: "100%",
+          });
+
+          const descriptionAnimation = useSpring({
+            opacity: inView ? 1 : 0,
+            transform: inView
+              ? "translateX(0)"
+              : isLeftAligned
+              ? `translateX(100%)`
+              : `translateX(-100%)`,
+            delay: 200,
           });
 
           const imageTrail = useTrail(section.images.length, {
@@ -183,10 +210,10 @@ const MorphingSVG: React.FC = () => {
             transform: inView
               ? "translateX(0)"
               : !isLeftAligned
-              ? "translateX(50px)"
-              : "translateX(-50px)",
-            config: { tension: 200, friction: 20 },
-            delay: 250,
+              ? "translateX(-150px)"
+              : "translateX(150px)",
+            config: { tension: 400, friction: 150 },
+            delay: 400,
           });
 
           return (
@@ -250,23 +277,23 @@ const MorphingSVG: React.FC = () => {
                 textAlign={{ base: "center", md: "left" }}
                 paddingX={4}
               >
-                <animated.div style={textAnimation}>
+                <animated.div style={titleAnimation}>
                   <Text
                     fontSize={{ md: "5xl", base: "4xl" }}
                     fontWeight="bold"
-                    background={`linear-gradient(to right, ${endColor}, ${startColor});`}
+                    background={`linear-gradient(270deg, ${endColor}, ${startColor})`}
                     backgroundClip={"text"}
-                    textAlign={{
-                      md: isLeftAligned ? "right" : "left",
-                    }}
+                    textAlign={isLeftAligned ? "right" : "left"}
                   >
                     {section.title}
                   </Text>
+                </animated.div>
+                <animated.div style={descriptionAnimation}>
                   <Text
                     fontFamily={"Montserrat"}
-                    fontSize={"2xl"}
+                    fontSize={{ base: "xl", md: "2xl" }}
                     fontWeight={600}
-                    lineHeight={1}
+                    lineHeight={1.5}
                     marginTop={2}
                     textAlign={{ md: isLeftAligned ? "right" : "left" }}
                   >
