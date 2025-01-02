@@ -212,7 +212,7 @@ const MorphingSVG: React.FC = () => {
               : !isLeftAligned
               ? "translateX(-150px)"
               : "translateX(150px)",
-            config: { tension: 400, friction: 150 },
+            config: { tension: 300, friction: 60 },
             delay: 400,
           });
 
