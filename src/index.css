@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "AzonixRegular";
+  src: local("AzonixRegular"), url("./assets/fonts/AzonixRegular.woff");
+}
+
+body {
+  font-family: "AzonixRegular", Courier, monospace !important;
+
+}
