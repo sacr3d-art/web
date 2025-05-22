@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
     >
       <Text fontSize={14}>© 2025 Sacr3d Art. All rights reserved.</Text>
       <Stack direction="row" spacing={6}>
-        <Link href="https://www.facebook.com" isExternal>
+        {/* <Link href="https://www.facebook.com" isExternal>
           <IconButton
             aria-label="Facebook"
             icon={<FaFacebook />}
@@ -41,8 +41,8 @@ const Footer: React.FC = () => {
             _hover={{ bg: "#000", color: "white" }}
             size="lg"
           />
-        </Link>
-        <Link href="https://www.instagram.com" isExternal>
+        </Link> */}
+        <Link href="https://www.instagram.com/sacr3d.art_/" isExternal>
           <IconButton
             aria-label="Instagram"
             icon={<FaInstagram />}

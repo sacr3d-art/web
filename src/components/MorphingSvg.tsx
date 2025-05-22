@@ -281,8 +281,11 @@ const MorphingSVG: React.FC = () => {
                   <Text
                     fontSize={{ md: "5xl", base: "4xl" }}
                     fontWeight="bold"
-                    background={`linear-gradient(270deg, ${endColor}, ${startColor})`}
-                    backgroundClip={"text"}
+                    background={{
+                      base: `linear-gradient(270deg, ${endColor}, ${startColor})`,
+                      md: `linear-gradient(90deg, ${endColor}, ${startColor})`,
+                    }}
+                    backgroundClip={{ base: "text", md: "text" }}
                     textAlign={{
                       base: "center",
                       md: isLeftAligned ? "right" : "left",
@@ -360,7 +363,7 @@ const MorphingSVG: React.FC = () => {
         })}
       </Flex>
 
-      {/* <Flex flexDirection={"column"}>
+      <Flex flexDirection={"column"}>
         <Text
           fontSize="5xl"
           fontWeight="bold"
@@ -371,8 +374,8 @@ const MorphingSVG: React.FC = () => {
           Let's get in touch
         </Text>
         <Link href="mailto:info@sacr3d.art">info@sacr3d.art</Link>
-        <Link href="tel:+36205254654">+3620525464</Link>
-      </Flex> */}
+        <Link href="tel:+36205254654">+36205254654</Link>
+      </Flex>
 
       {/* Modal */}
       <Modal

@@ -69,10 +69,10 @@ export const sections = [
         url: "https://i.imgur.com/sDKE8ZI.jpeg",
       },
       {
-        title: "Feci",
+        title: "Áfonya",
         description:
           "Our plant-loving zen maestro, who is the mastermind behind the machinery",
-        url: "https://i.imgur.com/jMEDveH.jpeg",
+        url: "https://i.imgur.com/iNCAlI7.jpeg",
       },
       {
         title: "Spiderman (Symbiote)",
@@ -117,7 +117,7 @@ export const sections = [
       {
         title: "in our office",
         description: "",
-        url: "https://i.imgur.com/CYhDFS5.jpeg",
+        url: "https://i.imgur.com/FdjS1ti.jpeg",
       },
       {
         title: "in the wild",
